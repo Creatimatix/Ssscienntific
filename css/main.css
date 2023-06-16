@@ -199,6 +199,7 @@ h6 {
         var(--r) calc(50% - var(--f)/2));
     background: #f14747;
     box-shadow: 0 calc(-1*var(--f)) 0 inset rgba(8, 8, 8, 0.333);
+	font-size: 20px;
   }
 
   .box {
@@ -27276,11 +27277,13 @@ a.logo img {
 	font-size: 30px;
 	font-weight: 500;
 	letter-spacing: 1px;
+	margin-right:25px;
 }
 
 @media (max-width: 1400px) {
 	.top-includes > li.metaphone {
 		font-size: 22px;
+		margin-right:25px;
 	}
 }
 
@@ -27288,6 +27291,7 @@ a.logo img {
 	.top-includes > li.metaphone {
 		display: block;
 		margin-right: 0;
+		margin-right:25px;
 	}
 }
 
