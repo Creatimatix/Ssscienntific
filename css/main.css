@@ -27277,13 +27277,13 @@ a.logo img {
 	font-size: 30px;
 	font-weight: 500;
 	letter-spacing: 1px;
-	margin-right:25px;
+	margin-right:40px;
 }
 
 @media (max-width: 1400px) {
 	.top-includes > li.metaphone {
 		font-size: 22px;
-		margin-right:25px;
+		margin-right:40px;
 	}
 }
 
@@ -27291,7 +27291,7 @@ a.logo img {
 	.top-includes > li.metaphone {
 		display: block;
 		margin-right: 0;
-		margin-right:25px;
+		margin-right:40px;
 	}
 }
 
@@ -28141,7 +28141,8 @@ body.active-side-header.slide-right .page_header_side {
 	flex-direction: column;
 	justify-content: center;
 	margin-left: 250px;
-	max-width: 730px;
+	max-width: 550px;
+	max-height:500px;
 	padding: 187px 63px;
 	position: relative;
 	width: 100%;
@@ -28271,8 +28272,8 @@ body.active-side-header.slide-right .page_header_side {
 	}
 
 	.page_slider .intro_before_featured_word {
-		font-size: 16px;
-		font-weight: 500;
+		font-size: 12px;
+		font-weight: 400;
 		margin-bottom: 20px;
 		text-transform: uppercase;
 	}
@@ -28280,13 +28281,13 @@ body.active-side-header.slide-right .page_header_side {
 
 @media (min-width: 300px) and (max-width: 768px) {
 	.page_slider .intro_before_featured_word {
-		font-size: 12px;
+		font-size: 8px;
 	}
 }
 
 @media (min-width: 300px) {
 	.page_slider .intro_featured_word {
-		font-size: 100px;
+		font-size: 70px;
 		font-weight: 300;
 		letter-spacing: -1px;
 		line-height: 1;
@@ -28296,19 +28297,19 @@ body.active-side-header.slide-right .page_header_side {
 
 @media (min-width: 300px) and (max-width: 1450px) {
 	.page_slider .intro_featured_word {
-		font-size: 60px;
+		font-size: 30px;
 	}
 }
 
 @media (min-width: 300px) and (max-width: 768px) {
 	.page_slider .intro_featured_word {
-		font-size: 40px;
+		font-size: 20px;
 	}
 }
 
 @media (min-width: 300px) and (max-width: 575px) {
 	.page_slider .intro_featured_word {
-		font-size: 30px;
+		font-size: 20px;
 		margin-bottom: 20px;
 		text-align: center;
 	}
@@ -28320,7 +28321,7 @@ body.active-side-header.slide-right .page_header_side {
 	}
 
 	.page_slider .intro_after_featured_word {
-		font-size: 20px;
+		font-size: 10px;
 		font-weight: 400;
 		margin-bottom: 50px;
 	}
