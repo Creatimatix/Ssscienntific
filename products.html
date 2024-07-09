@@ -402,14 +402,14 @@
 									<p class="woocommerce-result-count" id="woocommerce-result-count">
 										</p>
 									<form class="woocommerce-ordering" method="get">
-										<select name="orderby" class="orderby">
+										<!-- <select name="orderby" class="orderby">
 											<option value="menu_order" selected="selected">Default sorting</option>
 											<option value="popularity">Sort by popularity</option>
 											<option value="rating">Sort by average rating</option>
 											<option value="date">Sort by newness</option>
 											<option value="price">Sort by price: low to high</option>
 											<option value="price-desc">Sort by price: high to low</option>
-										</select>
+										</select> -->
 									</form>
 								</div>
 
@@ -419,7 +419,7 @@
 								
 
 								</ul>
-							</div>
+							</div> 
 							<!-- columns 2 -->
 
 							<nav class="woocommerce-pagination">
@@ -454,7 +454,7 @@
 									</label>
 
 									<input type="search"  onkeyup="searchProduct()" id="woocommerce-product-search-field-widget" class="search-field" placeholder="Search" value="" name="search">
-									<input type="submit" value="Search">
+									<input type="submit" value="Search" onClick="searchProduct()">
 								</form>
 							</div>
 
@@ -476,7 +476,22 @@
 
 			<script>
 
-        
+        function searchProduct(){
+			console.log("triggered!"+document.getElementById("woocommerce-product-search-field-widget").value);
+			var searchValue = document.getElementById("woocommerce-product-search-field-widget").value.toUpperCase();
+			var ProductList =  document.getElementById("products1").getElementsByTagName("li");
+			
+			for(let i=0;i<ProductList.length;i++){
+				if(((ProductList[i].className.toUpperCase()).indexOf(searchValue)>-1) 
+				|| (((ProductList[i].getElementsByTagName("h2")[0].getElementsByTagName("a")[0].text).toUpperCase()).indexOf(searchValue)>-1)
+				){
+					ProductList[i].style.display ="";
+				}
+				else{
+					ProductList[i].style.display ="none";
+				}
+			}
+		}
 
 
 
@@ -493,8 +508,9 @@
 							if(obj[i].products.length>0)
 							{
 								for(product=0;product<obj[i].products.length;product++){
-									
-									printProduct(obj[i].products[product].name,obj[i].category_name,'Product_Image_URL','Product_File_URL');
+									console.log("Image URL : "+obj[i].image_url );
+									var image_url = obj[i].image_url !=undefined ? obj[i].image_url : "images/Dummy_Product_Image.jpg";
+									printProduct(obj[i].products[product].name,obj[i].category_name,image_url,obj[i].document_url);
 									
 								}
 							}
@@ -509,7 +525,8 @@
 										if(obj[i].child_level_categories[j].products.length>0)
 										{
 											for(product=0;product<obj[i].child_level_categories[j].products.length;product++){
-												printProduct(obj[i].child_level_categories[j].products[product].name,obj[i].child_level_categories[j].category_name,'Product_Image_URL','Product_File_URL');
+												var image_url = obj[i].child_level_categories[j].image_url !=null ? obj[i].child_level_categories[j].image_url : "images/Dummy_Product_Image.jpg";
+												printProduct(obj[i].child_level_categories[j].products[product].name,obj[i].child_level_categories[j].category_name,image_url,obj[i].child_level_categories[j].document_url);
 											}
 										}
 									}
@@ -522,7 +539,7 @@
 						// Funtion to print the Product on Product View
 						function printProduct(Product_Name, Product_LineName, Product_Image_URL, File_URL){
 							
-							document.getElementById("products1").innerHTML += "<li class='product "+Product_LineName+" item-gallery vertical-item' name='"+Product_Name+"'>"
+							document.getElementById("products1").innerHTML += "<li class='product "+Product_LineName+" "+Product_Name+" item-gallery vertical-item' name='"+Product_Name+"'>"
 								+"<div class='product-inner'>"
 								+"<a class='woocommerce-LoopProduct-link woocommerce-loop-product__link' href='shop-product-left.html'>"
 								+"<img src='"+Product_Image_URL+"' alt='Product_Image' style='max-height:150px'>"
