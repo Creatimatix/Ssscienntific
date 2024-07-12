@@ -58,6 +58,14 @@
 		.show{
 			display: block;
 		}
+		.item {
+            padding: 10px;
+            cursor: pointer;
+        }
+		.highlighted {
+            background-color: yellow;
+            font-weight: bold;
+        }
 	</style>
 </head>
 
@@ -142,12 +150,7 @@
 	<!-- Unyson messages modal -->
 	<div class="modal fade" tabindex="-1" role="dialog" id="messages_modal">
 		<div class="fw-messages-wrap ls p-normal">
-			<!-- Uncomment this UL with LI to show messages in modal popup to your user: -->
-			<!--
-		<ul class="list-unstyled">
-			<li>Message To User</li>
-		</ul>
-		-->
+			
 
 		</div>
 	</div><!-- eof .modal -->
@@ -321,12 +324,6 @@
 										</li>
 										<!-- eof pages -->
 
-										<!-- eof features -->
-
-
-										
-										<!-- eof blog -->
-
 										<!-- shop -->
 										<li class="active">
 											<a href="products.html">Products</a>
@@ -349,9 +346,6 @@
 									<li class="metaphone">
 										<a href="javascript:void(0)">+91 98332 41875</a>
 									</li>
-									<!-- <li class="special-menu">
-										<span class="toggle_menu toggle_menu_side header-slide toggle_menu_side_special"><span></span></span>
-									</li> -->
 								</ul>
 
 
@@ -374,9 +368,6 @@
 									<li class="breadcrumb-item">
 										<a href="./index.html">Home</a>
 									</li>
-									<!-- <li class="breadcrumb-item">
-										<a href="javascript:void(0)">Shop</a>
-									</li> -->
 									<li class="breadcrumb-item active">
 										Products
 									</li>
@@ -402,14 +393,7 @@
 									<p class="woocommerce-result-count" id="woocommerce-result-count">
 										</p>
 									<form class="woocommerce-ordering" method="get">
-										<!-- <select name="orderby" class="orderby">
-											<option value="menu_order" selected="selected">Default sorting</option>
-											<option value="popularity">Sort by popularity</option>
-											<option value="rating">Sort by average rating</option>
-											<option value="date">Sort by newness</option>
-											<option value="price">Sort by price: low to high</option>
-											<option value="price-desc">Sort by price: high to low</option>
-										</select> -->
+										
 									</form>
 								</div>
 
@@ -423,8 +407,8 @@
 							<!-- columns 2 -->
 
 							<nav class="woocommerce-pagination">
-								<ul class="page-numbers">
-									<li>
+								<ul class="page-numbers" id="Pagination">
+									<!-- <li>
 										<a class="previous page-numbers" href="javascript:void(0);" onClick="previousPage()"><i class="fas fa-chevron-left"></i></a>
 									</li>
 									<li>
@@ -435,7 +419,7 @@
 									</li>
 									<li>
 										<a class="next page-numbers" href="javascript:void(0);" onClick="nextPage()"><i class="fas fa-chevron-right"></i></a>
-									</li>
+									</li> -->
 								</ul>
 							</nav>
 
@@ -453,14 +437,15 @@
 										Search for:
 									</label>
 
-									<input type="search"  onkeyup="searchProduct()" id="woocommerce-product-search-field-widget" class="search-field" placeholder="Search" value="" name="search">
-									<input type="submit" value="Search" onClick="searchProduct()">
+									<input type="search" onkeyup="searchProduct()" id="woocommerce-product-search-field-widget" class="search-field" placeholder="Search" name="search">
+									<!-- <button onclick="loadProducts()" >Search</button> -->
+									<!-- <input type="submit" value="Search" onClick="searchProduct()"> -->
 								</form>
 							</div>
 
 							<div class="widget woocommerce widget_product_categories">
 								<h3 class="widget-title">Categories</h3>
-                <a class="btn btn-gradient small-btn" href="javascript:void(0)" onClick="loadProducts()">Reset</a>
+                				<a class="btn btn-gradient small-btn" href="javascript:void(0)" onClick="loadProducts()">Reset</a>
 								<ul class=""  id="myUL">
 										<!-- Code will be printed by Script -->
 								</ul>
@@ -473,177 +458,6 @@
 
 				</div>
 			</section>
-
-			<script>
-
-        function searchProduct(){
-			console.log("triggered!"+document.getElementById("woocommerce-product-search-field-widget").value);
-			var searchValue = document.getElementById("woocommerce-product-search-field-widget").value.toUpperCase();
-			var ProductList =  document.getElementById("products1").getElementsByTagName("li");
-			
-			for(let i=0;i<ProductList.length;i++){
-				if(((ProductList[i].className.toUpperCase()).indexOf(searchValue)>-1) 
-				|| (((ProductList[i].getElementsByTagName("h2")[0].getElementsByTagName("a")[0].text).toUpperCase()).indexOf(searchValue)>-1)
-				){
-					ProductList[i].style.display ="";
-				}
-				else{
-					ProductList[i].style.display ="none";
-				}
-			}
-		}
-
-
-
-				function loadProducts(){
-					
-					// ------------- Product show Code -----------------------------
-					
-          // console.log("first Print"+products);
-					const obj = JSON.parse(products);
-					for(i=0;i<obj.length;i++){
-						
-						// Check if products are available in this category
-						if(obj[i].hasOwnProperty('products')){
-							if(obj[i].products.length>0)
-							{
-								for(product=0;product<obj[i].products.length;product++){
-									console.log("Image URL : "+obj[i].image_url );
-									var image_url = obj[i].image_url !=undefined ? obj[i].image_url : "images/Dummy_Product_Image.jpg";
-									printProduct(obj[i].products[product].name,obj[i].category_name,image_url,obj[i].document_url);
-									
-								}
-							}
-						}
-								
-						if(obj[i].hasOwnProperty('child_level_categories')){
-							if(obj[i].child_level_categories.length>0){			
-								for(j=0;j<obj[i].child_level_categories.length;j++){
-									
-									// Check if products are available in this category
-									if(obj[i].child_level_categories[j].hasOwnProperty('products')){
-										if(obj[i].child_level_categories[j].products.length>0)
-										{
-											for(product=0;product<obj[i].child_level_categories[j].products.length;product++){
-												var image_url = obj[i].child_level_categories[j].image_url !=null ? obj[i].child_level_categories[j].image_url : "images/Dummy_Product_Image.jpg";
-												printProduct(obj[i].child_level_categories[j].products[product].name,obj[i].child_level_categories[j].category_name,image_url,obj[i].child_level_categories[j].document_url);
-											}
-										}
-									}
-									
-								}
-							}
-						}
-					}
-				}	
-						// Funtion to print the Product on Product View
-						function printProduct(Product_Name, Product_LineName, Product_Image_URL, File_URL){
-							
-							document.getElementById("products1").innerHTML += "<li class='product "+Product_LineName+" "+Product_Name+" item-gallery vertical-item' name='"+Product_Name+"'>"
-								+"<div class='product-inner'>"
-								+"<a class='woocommerce-LoopProduct-link woocommerce-loop-product__link' href='shop-product-left.html'>"
-								+"<img src='"+Product_Image_URL+"' alt='Product_Image' style='max-height:150px'>"
-								+"</a>"	
-								+"<h2 class='woocommerce-loop-product__title'><a class='woocommerce-LoopProduct-link woocommerce-loop-product__link' href='shop-product-right.html'>"+Product_Name+"</a></h2>"
-								+"<span class='price'>"
-								+"<ins><span><span><a href="+File_URL+">View More Details</a></span></ins></span>"
-								+"</div>"
-								+"</li>"
-						}
-
-					// ------------- Product Show Code Ends Here -------------------------------
-            var product_list="";
-          function loadlist(){
-            const obj = JSON.parse(products);
-            product_list="";
-            // Head Category
-              
-                // for each category
-                for(i=0;i<obj.length;i++){
-
-                  // if category have child category
-                  if(obj[i].child_level_categories.length>0){
-                    product_list += "<li><span class='caret'>" + obj[i].category_name + " ("+obj[i].child_level_categories.length+")</span>"
-                      + "<ul class='nested'>"
-                        
-                        // for each child category
-                        for(j=0; j<obj[i].child_level_categories.length; j++){
-                          if(obj[i].child_level_categories[j].child_level_categories.length>0){
-                            product_list+= "<li><span class='caret'>" + obj[i].child_level_categories[j].category_name + " ("+obj[i].child_level_categories[j].child_level_categories.length+")</span>"
-                            + "<ul class='nested'>"
-
-                              // loop over each sub category
-                              for(k=0;k<obj[i].child_level_categories[j].child_level_categories.length;k++){
-                                product_list+= "<li>"+ obj[i].child_level_categories[j].child_level_categories[k].category_name + "</li>"
-                              }
-
-                            product_list+= "</ul>"
-                            + "</li>"    
-                          }
-                          else{
-                            product_list+= "<li><a href='javascript:void(0)' onClick=\"filterCategory('"+obj[i].child_level_categories[j].category_name +"')\">"+ obj[i].child_level_categories[j].category_name + "</a></li>"
-                          }
-
-                        }
-
-                    product_list+= "</ul>"
-                      + "</li>"                        
-                  }
-
-                  // if category does not have child category
-                  else{
-                    product_list+= "<li><a href='javascript:void(0)' onClick=\"filterCategory('"+obj[i].category_name +"')\">"+ obj[i].category_name + "</a></li>"
-                  }
-                  
-              
-                }
-                
-            document.getElementById("myUL").innerHTML = product_list;
-          }
-
-					//Script to filter the products list based on search value
-          function filterCategory(categoryValue) {
-								var searchValue = categoryValue.toUpperCase();
-								var ProductList =  document.getElementById("products1").getElementsByTagName("li");
-								
-								for(let i=0;i<ProductList.length;i++){
-									if(((ProductList[i].className.toUpperCase()).indexOf(searchValue)>-1) 
-									|| (((ProductList[i].getElementsByTagName("h2")[0].getElementsByTagName("a")[0].text).toUpperCase()).indexOf(searchValue)>-1)
-									){
-										ProductList[i].style.display ="";
-									}
-									else{
-										ProductList[i].style.display ="none";
-									}
-								}
-							}
-
-				// Initial Call
-        setTimeout(() => {
-          loadProducts();
-          loadlist();
-        }, 2000);
-
-
-
-        // ---------- Carrot Functionality -------------------
-
-        var toggler = document.getElementsByClassName("caret");
-        var i;
-
-        for (i = 0; i < toggler.length; i++) {
-          toggler[i].addEventListener("click", function() {
-            console.log("clicked!");
-            this.parentElement.querySelector(".nested").classList.toggle("active");
-            this.classList.toggle("caret-down");
-          });
-        }
-
-        // ---------- End of Carrot Functionality ------------
-
-				
-			</script>
-
 
 
 			<footer class="page_footer  text-center c-gutter-100 text-sm-left  ds">
@@ -770,6 +584,7 @@
 
 	<script src="js/compressed.js"></script>
 	<script src="js/main.js"></script>
+	<script src="product.js"></script>
   <style>
    
     </style>
