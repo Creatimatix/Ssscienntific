@@ -28,7 +28,7 @@
 	
 	<script>
     var products;
-    fetch('http://creatimatix.com/ssbackend/api/category-product')
+    fetch('https://creatimatix.com/ssbackend/api/category-product')
     .then(response => {
     if (!response.ok) {
     throw new Error('Network response was not ok');
@@ -66,6 +66,11 @@
             background-color: yellow;
             font-weight: bold;
         }
+
+		.selected{
+			background-image: linear-gradient(to top, #dd4454 0%, #dd9044 100%);
+    		color: #fff;
+		}
 	</style>
 </head>
 
@@ -388,6 +393,11 @@
 
 
 						<main class="col-lg-7 col-xl-9 order-lg-2">
+							<nav class="woocommerce-pagination">
+								<ul class="page-numbers" id="Pagination1">
+								</ul>
+							</nav>
+						</br>
 							<div>
 								<div class="products-selection">
 									<p class="woocommerce-result-count" id="woocommerce-result-count">
@@ -397,6 +407,7 @@
 									</form>
 								</div>
 
+								
 
 								<ul class="products columns-3" id="products1" data-filters=".gallery-filters">
 								<!-- looping over list of products -->
