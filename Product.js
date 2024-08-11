@@ -25,7 +25,8 @@ function loadProducts(){
 				for(product=0;product<obj[i].products.length;product++){
 					// console.log("Image URL : "+obj[0].image?.image_url );
 					var image_url = obj[i].products[product].image?.image_url !=undefined ? obj[i].products[product].image?.image_url : "images/Dummy_Product_Image.jpg";
-					AddProductstoArray(obj[i].products[product].name,obj[i].category_name,image_url,obj[i].document_url);
+					var document_url = obj[i].products[product].documents?.document_url !=undefined ? obj[i].products[product].documents?.document_url : "";
+					AddProductstoArray(obj[i].products[product].name,obj[i].category_name,image_url,document_url);
 					// printProduct(obj[i].products[product].name,obj[i].category_name,image_url,obj[i].document_url);
 					
 				}
@@ -43,7 +44,8 @@ function loadProducts(){
 							for(product=0;product<obj[i].child_level_categories[j].products.length;product++){
 								// console.log("Image URL : "+obj[i].image.image_url );
 								var image_url = obj[i].child_level_categories[j].image?.image_url !=null ? obj[i].child_level_categories[j].image?.image_url : "images/Dummy_Product_Image.jpg";
-								AddProductstoArray(obj[i].child_level_categories[j].products[product].name,obj[i].child_level_categories[j].category_name,image_url,obj[i].child_level_categories[j].document_url);
+								var document_url = obj[i].child_level_categories[j].documents?.document_url !=null ? obj[i].child_level_categories[j].documents?.document_url : "i";
+								AddProductstoArray(obj[i].child_level_categories[j].products[product].name,obj[i].child_level_categories[j].category_name,image_url,document_url);
 								// printProduct(obj[i].child_level_categories[j].products[product].name,obj[i].child_level_categories[j].category_name,image_url,obj[i].child_level_categories[j].document_url);
 							}
 						}
@@ -172,15 +174,23 @@ function filterCategory(categoryValue) {
 
 function renderPagination(totalItems) {
     const pagination = document.getElementById('Pagination');
+    const pagination1 = document.getElementById('Pagination1');
     pagination.innerHTML = '';
+    pagination1.innerHTML = '';
     const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+	// background-color: #dd4454;
 
     for (let i = 1; i <= totalPages; i++) {
         // const li = document.createElement('li');
-		pagination.innerHTML +="<li><a class='page-numbers current'  id='currentpage' onClick=\"OpenPage("+i+")\">"+i+"</a></li>";
+		// pagination.innerHTML +="<li><a class='page-numbers current'  id='currentpage' onClick=\"OpenPage("+i+")\">"+i+"</a></li>";
+		pagination.innerHTML +="<li class='page-list'><a class='page-number'>"+i+"</a></li>";
+		pagination1.innerHTML +="<li class='page-list'><a class='page-number'>"+i+"</a></li>";
         
     }
 }
+
+
 
 function OpenPage(PageNumber){
 	currentPage=PageNumber;
@@ -188,7 +198,46 @@ function OpenPage(PageNumber){
 }
 
 
+// var togglerPageNumbers = document.getElementsByClassName("page-numbers");
 
+
+// for (let i = 0; i < togglerPageNumbers.length; i++) {
+// togglerPageNumbers[i].addEventListener("click", function(event) {
+// // console.log("clicked!"+event.target.textContent);
+
+// OpenPage(event.target.textContent);
+// // event.target.toggle("selected");
+// //togglerPageNumbers[i].parentElement.querySelector("li").classList.toggle("selected");
+// // this.classList.toggle("selected");	
+// event.target.classList.toggle("selected");
+// });
+// }
+
+
+var togglerPageNumbers = document.getElementsByClassName("page-numbers");
+
+for (let i = 0; i < togglerPageNumbers.length; i++) {
+    togglerPageNumbers[i].addEventListener("click", function(event) {
+		event.preventDefault(); // Prevent default action of clicking anchor tag
+        // console.log("clicked!" + event.target.textContent);
+        // Opening the page using page number value
+        OpenPage(event.target.textContent);
+		
+    });
+}
+
+
+var toggleElements = document.getElementsByClassName('page-list');
+
+// Loop through each element and add click event listener
+for (var i = 0; i < toggleElements.length; i++) {
+  toggleElements[i].addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent default action of clicking anchor tag
+    
+    // Toggle the 'selected' class on the clicked <li> element
+    this.classList.toggle('selected');
+  });
+}
 
 // Initial Call
 setTimeout(() => {
@@ -201,9 +250,9 @@ loadlist();
 // ---------- Carrot Functionality -------------------
 
 var toggler = document.getElementsByClassName("caret");
-var i;
 
-for (i = 0; i < toggler.length; i++) {
+
+for (let i = 0; i < toggler.length; i++) {
 toggler[i].addEventListener("click", function() {
 console.log("clicked!");
 this.parentElement.querySelector(".nested").classList.toggle("active");
@@ -221,3 +270,4 @@ const items = document.querySelectorAll('.myUL li');
                 item.classList.add('highlighted');
             });
         });
+
