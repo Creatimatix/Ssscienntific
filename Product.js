@@ -86,10 +86,10 @@ function AddProductstoArray(Product_Name, Product_LineName, Product_Image_URL, F
 				+"<div class='product-inner'> <center>"
 				+"<a class='woocommerce-LoopProduct-link woocommerce-loop-product__link' href='shop-product-left.html'>"
 				+"<img src='"+CurrentList[i].Image_URL+"' alt='Product_Image' style='max-height:150px'>"
-				+"</a>"	
+				+"</br></br></a>"	
 				+"<h2 class='woocommerce-loop-product__title'><center><a class='woocommerce-LoopProduct-link woocommerce-loop-product__link' href='shop-product-right.html'>"+CurrentList[i].Name+"</a></center></h2>"
 				+"<span class='price'>"
-				+"<ins><span><span><a href="+CurrentList[i].FilePath_URL+">View More Details</a></span></ins></span>"
+				+"</br>	<ins><span><span><a href="+CurrentList[i].FilePath_URL+" target='_blank'>View More Details</a></span></ins></span>"
 				+"</center></div>"
 				+"</li>"
 			}
