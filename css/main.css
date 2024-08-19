@@ -30240,6 +30240,7 @@ img.absolute_image {
 .page_footer {
 	overflow: visible;
 	position: relative;
+	margin-top: 100px;
 	/*overriding Bootstrap Addons buttons*/
 }
 

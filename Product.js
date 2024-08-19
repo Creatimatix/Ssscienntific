@@ -81,15 +81,24 @@ function AddProductstoArray(Product_Name, Product_LineName, Product_Image_URL, F
 			console.log("Start: "+start +"; end: "+end+"; length:"+CurrentList.length+"; itemsPerPage: "+itemsPerPage);
 			document.getElementById("products1").innerHTML ="";
 			for(let i=start; i<end;i++){
+
+				var inactive_status='';
+				if(CurrentList[i].FilePath_URL=='' || CurrentList[i].FilePath_URL==null){
+					inactive_status="pointer-events: none;";
+				}else{
+					inactive_status="";
+				}
 			
+				console.log("status:"+inactive_status);
+
 				document.getElementById("products1").innerHTML += "<li class='product "+CurrentList[i].LineName+" "+CurrentList[i].Name+" item-gallery vertical-item' name='"+CurrentList[i].Name+"'>"
 				+"<div class='product-inner'> <center>"
-				+"<a class='woocommerce-LoopProduct-link woocommerce-loop-product__link' href="+CurrentList[i].FilePath_URL+" target='_blank'>"
+				+"<a class='woocommerce-LoopProduct-link woocommerce-loop-product__link' href='"+CurrentList[i].FilePath_URL+"'  style='"+inactive_status+"' target='_blank'>"
 				+"<img src='"+CurrentList[i].Image_URL+"' alt='Product_Image' style='max-height:150px'>"
 				+"</br></br></a>"	
-				+"<h2 class='woocommerce-loop-product__title'><center><a class='woocommerce-LoopProduct-link woocommerce-loop-product__link' href='shop-product-right.html'>"+CurrentList[i].Name+"</a></center></h2>"
+				+"<h2 class='woocommerce-loop-product__title'><center><a class='woocommerce-LoopProduct-link woocommerce-loop-product__link'  href='"+CurrentList[i].FilePath_URL+"'  style='"+inactive_status+"' target='_blank' >"+CurrentList[i].Name+"</a></center></h2>"
 				+"<span class='price'>"
-				+"</br><ins><span><span><a href="+CurrentList[i].FilePath_URL+" target='_blank'>View More Details</a></span></ins></span>"
+				+"</br><ins><span><span><a href='"+CurrentList[i].FilePath_URL+"' style='"+inactive_status+"' target='_blank'>View More Details</a></span></ins></span>"
 				+"</center></div>"
 				+"</li>"
 			}
