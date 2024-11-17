@@ -26,7 +26,8 @@ function loadProducts(){
 					// console.log("Image URL : "+obj[0].image?.image_url );
 					var image_url = obj[i].products[product].image?.image_url !=undefined ? obj[i].products[product].image?.image_url : "images/Dummy_Product_Image.jpg";
 					var document_url = obj[i].products[product].documents?.document_url !=undefined ? obj[i].products[product].documents?.document_url : "";
-					AddProductstoArray(obj[i].products[product].name,obj[i].category_name,image_url,document_url);
+					
+					AddProductstoArray(obj[i].products[product].id,obj[i].products[product].name,obj[i].category_name,image_url,document_url);
 					// printProduct(obj[i].products[product].name,obj[i].category_name,image_url,obj[i].document_url);
 					
 				}
@@ -42,10 +43,10 @@ function loadProducts(){
 						if(obj[i].child_level_categories[j].products.length>0)
 						{
 							for(product=0;product<obj[i].child_level_categories[j].products.length;product++){
-								// console.log("Image URL : "+obj[i].image.image_url );
+								// console.log("Image URL : "+obj[i].child_level_categories[j].products[product].id);
 								var image_url = obj[i].child_level_categories[j].image?.image_url !=null ? obj[i].child_level_categories[j].image?.image_url : "images/Dummy_Product_Image.jpg";
 								var document_url = obj[i].child_level_categories[j].documents?.document_url !=null ? obj[i].child_level_categories[j].documents?.document_url : "i";
-								AddProductstoArray(obj[i].child_level_categories[j].products[product].name,obj[i].child_level_categories[j].category_name,image_url,document_url);
+								AddProductstoArray(obj[i].child_level_categories[j].products[product].id,obj[i].child_level_categories[j].products[product].name,obj[i].child_level_categories[j].category_name,image_url,document_url);
 								// printProduct(obj[i].child_level_categories[j].products[product].name,obj[i].child_level_categories[j].category_name,image_url,obj[i].child_level_categories[j].document_url);
 							}
 						}
@@ -60,9 +61,10 @@ function loadProducts(){
 }	
 
 // Add Products to Array
-function AddProductstoArray(Product_Name, Product_LineName, Product_Image_URL, File_URL){
+function AddProductstoArray(Product_ID, Product_Name, Product_LineName, Product_Image_URL, File_URL){
 
 	let Product_element = {
+		ID : Product_ID,
 		Name: Product_Name,
 		LineName:Product_LineName,
 		Image_URL: Product_Image_URL,
@@ -83,22 +85,25 @@ function AddProductstoArray(Product_Name, Product_LineName, Product_Image_URL, F
 			for(let i=start; i<end;i++){
 
 				var inactive_status='';
-				if(CurrentList[i].FilePath_URL=='' || CurrentList[i].FilePath_URL==null){
-					inactive_status="pointer-events: none;";
-				}else{
-					inactive_status="";
-				}
+				// if(CurrentList[i].FilePath_URL=='' || CurrentList[i].FilePath_URL==null){
+				// 	inactive_status="pointer-events: none;";
+				// }else{
+				// 	inactive_status="";
+				// }
 			
-				console.log("status:"+inactive_status);
+				// console.log("status:"+inactive_status);
+				var product_page = "./product-single.html?product_id="+CurrentList[i].ID;
 
 				document.getElementById("products1").innerHTML += "<li class='product "+CurrentList[i].LineName+" "+CurrentList[i].Name+" item-gallery vertical-item' name='"+CurrentList[i].Name+"'>"
 				+"<div class='product-inner'> <center>"
-				+"<a class='woocommerce-LoopProduct-link woocommerce-loop-product__link' href='"+CurrentList[i].FilePath_URL+"'  style='"+inactive_status+"' target='_blank'>"
+				+"<a class='woocommerce-LoopProduct-link woocommerce-loop-product__link' href='"+product_page+"'  style='"+inactive_status+"'>"
 				+"<img src='"+CurrentList[i].Image_URL+"' alt='Product_Image' style='max-height:150px'>"
 				+"</br></br></a>"	
-				+"<h2 class='woocommerce-loop-product__title'><center><a class='woocommerce-LoopProduct-link woocommerce-loop-product__link'  href='"+CurrentList[i].FilePath_URL+"'  style='"+inactive_status+"' target='_blank' >"+CurrentList[i].Name+"</a></center></h2>"
+				// +"<h2 class='woocommerce-loop-product__title'><center><a class='woocommerce-LoopProduct-link woocommerce-loop-product__link'  href='"+CurrentList[i].FilePath_URL+"'  style='"+inactive_status+"' target='_blank' >"+CurrentList[i].Name+"</a></center></h2>"
+				+"<h2 class='woocommerce-loop-product__title'><center><a class='woocommerce-LoopProduct-link woocommerce-loop-product__link'  href='"+product_page+"'  style='"+inactive_status+"'>"+CurrentList[i].Name+"</a></center></h2>"
 				+"<span class='price'>"
-				+"</br><ins><span><span><a href='"+CurrentList[i].FilePath_URL+"' style='"+inactive_status+"' target='_blank'>View More Details</a></span></ins></span>"
+				+"</br><ins><span><span><a href='"+product_page+"' style='"+inactive_status+"'>View More Details</a></span></ins></span>"
+				+"</br><ins><span><span><a href='"+CurrentList[i].FilePath_URL+"' style='"+inactive_status+"' target='_blank'>Download Catalog</a></span></ins></span>"
 				+"</center></div>"
 				+"</li>"
 			}

@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+	<title>SS Scientific</title>
+	<meta charset="utf-8">
+	<!--[if IE]>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<![endif]-->
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="format-detection" content="telephone=no">
+
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+	<link rel="icon" type="image/x-icon" href="favicon.ico">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/animations.css">
+	<link rel="stylesheet" href="css/font-awesome5.css">
+	<link rel="stylesheet" href="css/icomoon.css">
+	<link rel="stylesheet" href="css/main.css" class="color-switcher-link">
+	<link rel="stylesheet" href="css/shop.css" class="color-switcher-link">
+	<script src="js/vendor/modernizr-2.6.2.min.js"></script>
+
+	<!--[if lt IE 9]>
+		<script src="js/vendor/html5shiv.min.js"></script>
+		<script src="js/vendor/respond.min.js"></script>
+		<script src="js/vendor/jquery-1.12.4.min.js"></script>
+	<![endif]-->
+
+	<script>
+		var product;
+
+		const urlParams = new URLSearchParams(window.location.search);
+		const product_id = urlParams.get('product_id');
+		// console.log(product_id);
+		// fetch('https://creatimatix.com/ssbackend/api/category-product')
+		fetch('https://ssscientific.net/ssbackend/api/product/'+product_id)
+		.then(response => {
+		if (!response.ok) {
+		throw new Error('Network response was not ok');
+		}
+		  product = response.json();
+		  return product; // Parse the JSON response
+		})
+		.then(response => {
+					product=JSON.stringify(response)
+	console.log(product);
+	
+		 })
+		.catch(error => {
+		console.error('There was a problem with the fetch operation:', error);
+	});
+	
+
+		
+		</script>
+
+<style>
+
+.product_img
+{
+	max-width: 300px;
+	max-height: 300px;
+}
+
+</style>
+
+</head>
+
+<body>
+	<!--[if lt IE 9]>
+		<div class="bg-danger text-center">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" class="color-main">upgrade your browser</a> to improve your experience.</div>
+	<![endif]-->
+
+	<div class="preloader">
+		<div class="preloader_image"></div>
+	</div>
+
+	<!-- search modal -->
+	<div class="modal" tabindex="-1" role="dialog" aria-labelledby="search_modal" id="search_modal">
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+		<div class="widget widget_search">
+			<form method="get" class="searchform search-form" action="/">
+				<div class="form-group">
+					<input type="text" value="" name="search" class="form-control" placeholder="Search keyword" id="modal-search-input">
+				</div>
+				<button type="submit" class="btn">Search</button>
+			</form>
+		</div>
+	</div>
+	<div id="team-form" class="ds modal">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 offset-md-3">
+					<div class="form-wrapper ls rounded">
+						<form class="contact-form" method="post" action="/">
+							<div class="row c-mb-20">
+								<div class="col-12 form-title text-center form-builder-item">
+									<div class="header title">
+										<h4><span class="thin">Contact</span> me</h4>
+									</div>
+								</div>
+							</div>
+							<div class="row c-mb-20">
+								<div class="col-sm-12">
+									<div class="form-group has-placeholder">
+										<label for="name333">Full Name <span class="required">*</span></label>
+										<input type="text" aria-required="true" size="30" value="" name="name" id="name333" class="form-control" placeholder="Your name">
+									</div>
+								</div>
+								<div class="col-sm-12">
+									<div class="form-group has-placeholder">
+										<label for="phone35533">Email address<span class="required">*</span></label>
+										<input type="tel" aria-required="true" size="30" name="phone" id="phone35533" class="form-control" placeholder="Phone Number">
+									</div>
+								</div>
+							</div>
+							<div class="row c-mb-20">
+								<div class="col-sm-12">
+									<div class="form-group has-placeholder">
+										<label for="message333">Message</label>
+										<textarea aria-required="true" rows="3" cols="45" name="message" id="message333" class="form-control" placeholder="Message"></textarea>
+									</div>
+								</div>
+							</div>
+							<div class="row c-mb-20">
+								<div class="col-sm-12 mb-0 mt-10 text-center">
+									<div class="form-group">
+										<input class="btn btn-gradient" type="submit" value="Contact me">
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+
+				</div>
+			</div>
+
+
+		</div>
+
+
+	</div>
+
+
+	<!-- Unyson messages modal -->
+	<div class="modal fade" tabindex="-1" role="dialog" id="messages_modal">
+		<div class="fw-messages-wrap ls p-normal">
+			<!-- Uncomment this UL with LI to show messages in modal popup to your user: -->
+			<!--
+		<ul class="list-unstyled">
+			<li>Message To User</li>
+		</ul>
+		-->
+
+		</div>
+	</div><!-- eof .modal -->
+
+	<!-- wrappers for visual page editor and boxed version of template -->
+	<div id="canvas">
+		<div id="box_wrapper">
+
+			<!-- template sections -->
+			<!--topline section visible only on small screens|-->
+
+
+			<div class="header_absolute">
+				<!--eof topline-->
+
+
+				<!-- header with two Bootstrap columns - left for logo and right for navigation -->
+				<header class="page_header_side header_slide header-special header_side_right ds">
+
+					<div class="scrollbar-macosx">
+						<div class="side_header_inner">
+							<p class="text-right mb-0 close-wrapper"><a href="javascript:void(0)">×</a></p>
+
+							<div class="widget widget_recent_posts">
+
+								<h3 class="widget-title">Our news</h3>
+								<ul class="list-unstyled">
+									<li class="media">
+										<article class="vertical-item  post type-post status-publish format-standard has-post-thumbnail">
+											<div class="item-content">
+												<div class="entry-header">
+													<div class="entry-meta">
+														<div class="byline">
+															<span class="date">
+																<a href="blog-@@type.html" rel="bookmark">
+																	<time class="published entry-date" datetime="2019-04-09T12:23:09+00:00">20.03.2019</time>
+																</a>
+															</span>
+															<span class="author vcard">
+																<a class="url fn n" href="blog-@@type.html" rel="author"><span>by</span> Admin</a>
+															</span>
+														</div>
+													</div>
+													<h4 class="entry-title">
+														<a href="blog-single-@@type.html" rel="bookmark">
+															Adipisicing elit sed do eiusmod
+														</a>
+													</h4>
+
+													<!-- .entry-meta -->
+												</div>
+												<!-- .entry-header -->
+											</div><!-- .item-content -->
+										</article>
+									</li>
+									<li class="media">
+										<article class="vertical-item  post type-post status-publish format-standard has-post-thumbnail">
+											<div class="item-content">
+												<div class="entry-header">
+													<div class="entry-meta">
+														<div class="byline">
+															<span class="date">
+																<a href="blog-@@type.html" rel="bookmark">
+																	<time class="published entry-date" datetime="2019-04-09T12:23:09+00:00">20.03.2019</time>
+																</a>
+															</span>
+															<span class="author vcard">
+																<a class="url fn n" href="blog-@@type.html" rel="author"><span>by</span> Admin</a>
+															</span>
+														</div>
+													</div>
+													<h4 class="entry-title">
+														<a href="blog-single-@@type.html" rel="bookmark">
+															Adipisicing elit sed do eiusmod
+														</a>
+													</h4>
+
+													<!-- .entry-meta -->
+												</div>
+												<!-- .entry-header -->
+											</div><!-- .item-content -->
+										</article>
+									</li>
+									<li class="media">
+										<article class="vertical-item  post type-post status-publish format-standard has-post-thumbnail">
+											<div class="item-content">
+												<div class="entry-header">
+													<div class="entry-meta">
+														<div class="byline">
+															<span class="date">
+																<a href="blog-@@type.html" rel="bookmark">
+																	<time class="published entry-date" datetime="2019-04-09T12:23:09+00:00">20.03.2019</time>
+																</a>
+															</span>
+															<span class="author vcard">
+																<a class="url fn n" href="blog-@@type.html" rel="author"><span>by</span> Admin</a>
+															</span>
+														</div>
+													</div>
+													<h4 class="entry-title">
+														<a href="blog-single-@@type.html" rel="bookmark">
+															Adipisicing elit sed do eiusmod
+														</a>
+													</h4>
+
+													<!-- .entry-meta -->
+												</div>
+												<!-- .entry-header -->
+											</div><!-- .item-content -->
+										</article>
+									</li>
+
+								</ul>
+							</div>
+							<div class="widget widget_about">
+								<h3 class="widget-title">About</h3>
+								<p>
+									Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde.
+								</p>
+							</div>
+							<div class="widget widget_mailchimp">
+								<h3 class="widget-title">Newsletter</h3>
+
+								<form class="signup" action="/">
+									<label for="mailchimp_email88d">
+										<span class="screen-reader-text">Subscribe:</span>
+									</label>
+									<input id="mailchimp_email88d" name="email" type="email" class="form-control mailchimp_email has-placeholder" placeholder="Email">
+									<button type="submit" class="search-submit">
+										<span class="screen-reader-text">Subscribe</span>
+									</button>
+									<div class="response"></div>
+								</form>
+							</div>
+							<div class="widget widget_social_icons">
+								<a href="javascript:void(0)" class="fab fa-facebook-f rounded-icon bg-icon fs-16" title="facebook"></a>
+								<a href="javascript:void(0)" class="fab fa-twitter rounded-icon bg-icon fs-16" title="telegram"></a>
+								<a href="javascript:void(0)" class="fab fa-linkedin-in rounded-icon bg-icon fs-16" title="linkedin"></a>
+								<a href="javascript:void(0)" class="fab fa-instagram rounded-icon bg-icon fs-16" title="instagram"></a>
+							</div>
+						</div>
+					</div>
+				</header>
+
+				<header class="page_header header-1 ds bg-transparent s-overlay s-py-10 ">
+
+					<div class="container-fluid">
+
+						<div class="row d-flex align-items-center justify-content-center">
+							<div class="col-xl-3 col-md-4 col-12 text-center">
+								<a href="./index.html" class="logo">
+									<img src="images/logo.png" alt="">
+									<span class="d-flex flex-column">
+										<span class="logo-text color-darkgrey">SS Scientific</span>
+										<!-- <span class="logo-subtext">oil & gas industry</span> -->
+									</span>
+								</a>
+							</div>
+							<div class="col-xl-6 col-1 text-center">
+								<!-- main nav start -->
+								<nav class="top-nav">
+									<ul class="nav sf-menu">
+
+
+										<li >
+											<a href="index.html">Home</a>											
+										</li>
+
+										<li>
+											<a href="about.html">About Us</a>
+										</li>
+										<!-- eof pages -->
+
+										<!-- shop -->
+										<li class="active">
+											<a href="products.html">Products</a>
+										</li>
+										<!-- eof shop -->
+
+										<!-- contacts -->
+										<li>
+											<a href="contact.html">Contact Us</a>
+										</li>
+										<!-- eof contacts -->
+									</ul>
+
+
+								</nav>
+								<!-- eof main nav -->
+							</div>
+							<div class="col-xl-3 col-md-7 col-12  d-flex justify-content-md-end">
+								<ul class="top-includes">
+									<li class="metaphone">
+										<a href="javascript:void(0)">+91 98332 41875</a>
+									</li>
+								</ul>
+
+
+							</div>
+
+						</div>
+
+					</div>
+					<!-- header toggler -->
+					<span class="toggle_menu"><span>menu</span></span>
+				</header>
+			</div>
+			<section class="page_title ds s-parallax s-pb-xl-80  s-pb-lg-100  s-pb-md-90 s-pt-md-190 s-pt-180 s-pb-60">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 text-center">
+							<h1>Products</h1>
+							<div class="breadcrumb-wrap">
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item">
+										<a href="./index.html">Home</a>
+									</li>
+									<li class="breadcrumb-item active">
+										<a href="./products.html">Products</a>
+									</li>
+								</ol>
+							</div>
+
+						</div>
+
+
+					</div>
+				</div>
+			</section>
+
+			<section class="ls s-pt-xl-160 s-pt-lg-130 s-pt-md-90 s-pt-60 s-pb-xl-280 s-pb-lg-250 s-pb-md-90 s-pb-60">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-10 offset-lg-1">
+
+							<div class="vertical-item content-padding overflow-hidden bordered rounded text-center">
+								<div class="item-media">
+									<div class="owl-carousel" id="product-image" data-margin="0" data-responsive-lg="1" data-responsive-md="1" data-responsive-sm="1" data-responsive-xs="1" data-dots="true">
+										<!-- <a href="images/gallery/full/04.jpg" class="photoswipe-link" data-width="1170" data-height="780">
+											<img src="images/gallery/full/01.jpg" alt="">
+										</a> -->
+										<!-- <a href="images/gallery/full/05.jpg" class="photoswipe-link" data-width="1170" data-height="780" data-iframe="https://www.youtube.com/embed/mcixldqDIEQ">
+											<img src="images/gallery/full/02.jpg" alt="">
+										</a>
+										<a href="images/gallery/full/06.jpg" class="photoswipe-link" data-width="1170" data-height="780" data-iframe="//player.vimeo.com/video/1084537">
+											<img src="images/gallery/full/03.jpg" alt="">
+										</a> -->
+									</div>
+								</div>
+								<div class="item-content">
+									<h4 id="product-title">
+										
+									</h4>
+									<p id="product-description">
+										
+									</p>
+									<div class="social-icons">
+										<a href="#" class="fab fa-facebook " title="facebook"></a>
+										<a href="#" class="fab fa-twitter " title="twitter"></a>
+										<a href="#" class="fab fa-instagram " title="instagram"></a>
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+
+					</div>
+
+				</div>
+			</section>
+
+
+			<footer class="page_footer  text-center c-gutter-100 text-sm-left  ds">
+				<div class="container">
+					<div class="row justify-content-center">
+
+						<div class="col-lg-4 col-md-6 order-1 order-lg-1  animate" data-animation="fadeInUp">
+							<div class="fw-divider-space divider-xl-160 divider-lg-130 divider-md-90 divider-60"></div>
+							<a href="./" class="logo">
+								<img src="images/logo.png" alt="">
+								<span class="d-flex flex-column">
+									<span class="logo-text color-darkgrey">SS Scientific</span>
+									<!-- <span class="logo-subtext">oil &amp; gas industry</span> -->
+								</span>
+							</a>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elitsed eiusmod tempor incididunt ut labordolore magna aliqua eniminim
+							</p>
+							<a href="javascript:void(0)" class="fab fa-facebook-f rounded-icon bg-icon fs-16" title="facebook"></a>
+							<a href="javascript:void(0)" class="fab fa-twitter rounded-icon bg-icon fs-16" title="telegram"></a>
+							<a href="javascript:void(0)" class="fab fa-linkedin-in rounded-icon bg-icon fs-16" title="linkedin"></a>
+							<a href="javascript:void(0)" class="fab fa-instagram rounded-icon bg-icon fs-16" title="instagram"></a>
+							<div class="fw-divider-space divider-xl-160 divider-lg-130 divider-md-60 divider-30"></div>
+						</div>
+
+						<div class="col-lg-4 col-md-12 ls order-3 order-lg-2 footer-special-column text-center animate" data-animation="fadeInUp">
+							<div class="form-wrapper">
+								<form class="contact-form" method="post" action="/">
+									<div class="row c-mb-20">
+										<div class="col-12 form-title text-center form-builder-item">
+											<div class="header title">
+												<h2>Write Us</h2>
+											</div>
+										</div>
+									</div>
+									<div class="row c-mb-10 c-gutter-10">
+										<div class="col-lg-12 text-center">
+											<div class="form-group has-placeholder">
+												<label for="name22335x5553">Full Name <span class="required">*</span></label>
+												<input type="text" aria-required="true" size="30" value="" name="name" id="name22335x5553" class="form-control" placeholder="Full Name">
+											</div>
+										</div>
+									</div>
+									<div class="row c-mb-10 c-gutter-10">
+										<div class="col-lg-12 text-center">
+											<div class="form-group has-placeholder">
+												<label for="name223355553">Phone Number <span class="required">*</span></label>
+
+												<input type="text" aria-required="true" size="30" value="" name="name" id="name223355553" class="form-control" placeholder="Phone Number">
+											</div>
+										</div>
+									</div>
+									<div class="row c-mb-10 c-gutter-10">
+										<div class="col-sm-12 text-center">
+											<div class="form-group has-placeholder">
+												<label for="message22335553">Message</label>
+
+												<textarea aria-required="true" rows="6" cols="45" name="message" id="message22335553" class="form-control" placeholder="Your Message"></textarea>
+											</div>
+										</div>
+									</div>
+									<div class="row c-mb-10 c-gutter-10">
+										<div class="col-sm-12 mb-0 mt-50">
+											<div class="form-group">
+												<input class="btn btn-gradient big-btn" type="submit" value="Send message">
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+							<h6 class="fs-12 text-uppercase">&copy; Copyright <span class="copyright_year">2019</span> All Rights Reserved</h6>
+						</div>
+
+						<div class="col-lg-4 col-md-6 order-2 order-lg-3 animate" data-animation="fadeInUp">
+							<div class="fw-divider-space divider-xl-160 divider-lg-130 divider-md-90"></div>
+							<div class="widget widget_icons_list">
+								<ul>
+									<li class="icon-inline ">
+										<div class="icon-styled icon-top  bordered round fs-16">
+											<i class="fas fa-phone"></i>
+										</div>
+										<p>800 123 4567</p>
+									</li>
+									<li class="icon-inline">
+										<div class="icon-styled icon-top bordered round  fs-16">
+											<i class="fas fa-envelope"></i>
+
+
+										</div>
+										<p><a href="javascript:void(0)">SS Scientific@example.com</a></p>
+									</li>
+									<li class="icon-inline">
+										<div class="icon-styled icon-top bordered round  fs-16">
+											<i class="fas fa-map-marker-alt"></i>
+										</div>
+										<p>
+											2469 Hoffman Avenue<br>
+											New York, NY 10016
+										</p>
+									</li>
+									<li class="icon-inline">
+										<div class="icon-styled icon-top bordered round  fs-16">
+											<i class="fas fa-clock"></i>
+										</div>
+										<p>
+											Mo-Fri: 8am - 6pm<br>
+											Sat: 10am - 4pm<br>
+											Sun: of
+										</p>
+									</li>
+								</ul>
+							</div>
+							<div class="fw-divider-space divider-xl-160 divider-lg-130 divider-md-60 divider-30"></div>
+						</div>
+					</div>
+				</div>
+
+			</footer>
+
+
+
+		</div><!-- eof #box_wrapper -->
+	</div><!-- eof #canvas -->
+
+
+	<script src="js/compressed.js"></script>
+	<script src="js/main.js"></script>
+	<script src="Product-single.js"></script>
+
+
+</body>
+
+</html>

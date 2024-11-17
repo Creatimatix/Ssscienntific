@@ -696,6 +696,7 @@ form.woocommerce-checkout input::-webkit-input-placeholder {
 }
 
 .woocommerce-pagination ul.page-numbers span:hover,
+.woocommerce-pagination ul.page-numbers a.selected,
 .woocommerce-pagination ul.page-numbers a:hover {
 	background-image: linear-gradient(to top, #dd4454 0%, #dd9044 100%);
 	color: #fff;
