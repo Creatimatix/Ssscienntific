@@ -80,7 +80,7 @@ function AddProductstoArray(Product_ID, Product_Name, Product_LineName, Product_
 			renderPagination(CurrentList.length);
 			const end = currentPage * itemsPerPage;
 			const start = end - itemsPerPage;
-			console.log("Start: "+start +"; end: "+end+"; length:"+CurrentList.length+"; itemsPerPage: "+itemsPerPage);
+			// console.log("Start: "+start +"; end: "+end+"; length:"+CurrentList.length+"; itemsPerPage: "+itemsPerPage);
 			document.getElementById("products1").innerHTML ="";
 			for(let i=start; i<end;i++){
 
@@ -197,9 +197,17 @@ function renderPagination(totalItems) {
 
     for (let i = 1; i <= totalPages; i++) {
         // const li = document.createElement('li');
+		if(i==1){
+			pagination.innerHTML +="<li class='page-list'><a class='page-number selected' >"+i+"</a></li>";
+			pagination1.innerHTML +="<li class='page-list'><a class='page-number selected'>"+i+"</a></li>";
+		}
+		else
+		{
+			pagination.innerHTML +="<li class='page-list'><a class='page-number'>"+i+"</a></li>";
+			pagination1.innerHTML +="<li class='page-list'><a class='page-number'>"+i+"</a></li>";
+		}
 		// pagination.innerHTML +="<li><a class='page-numbers current'  id='currentpage' onClick=\"OpenPage("+i+")\">"+i+"</a></li>";
-		pagination.innerHTML +="<li class='page-list'><a class='page-number'>"+i+"</a></li>";
-		pagination1.innerHTML +="<li class='page-list'><a class='page-number'>"+i+"</a></li>";
+		
         
     }
 }
@@ -236,22 +244,13 @@ for (let i = 0; i < togglerPageNumbers.length; i++) {
         // console.log("clicked!" + event.target.textContent);
         // Opening the page using page number value
         OpenPage(event.target.textContent);
+		updatePageNumberHighlightByValue(event.target.textContent,' selected');
 		
     });
 }
 
 
-var toggleElements = document.getElementsByClassName('page-list');
 
-// Loop through each element and add click event listener
-for (var i = 0; i < toggleElements.length; i++) {
-  toggleElements[i].addEventListener('click', function(event) {
-    event.preventDefault(); // Prevent default action of clicking anchor tag
-    
-    // Toggle the 'selected' class on the clicked <li> element
-    this.classList.toggle('selected');
-  });
-}
 
 // Initial Call
 setTimeout(() => {
@@ -268,7 +267,7 @@ var toggler = document.getElementsByClassName("caret");
 
 for (let i = 0; i < toggler.length; i++) {
 toggler[i].addEventListener("click", function() {
-console.log("clicked!");
+// console.log("clicked!");
 this.parentElement.querySelector(".nested").classList.toggle("active");
 this.classList.toggle("caret-down");
 });
@@ -276,12 +275,19 @@ this.classList.toggle("caret-down");
 
 // ---------- End of Carrot Functionality ------------
 
+function updatePageNumberHighlightByValue(searchValue, newClass) {
+	// Get all div elements with class 'content'
+	const a = document.querySelectorAll('a.page-number');
 
-const items = document.querySelectorAll('.myUL li');
-        items.forEach(item => {
-            item.addEventListener('click', () => {
-                items.forEach(i => i.classList.remove('highlighted'));
-                item.classList.add('highlighted');
-            });
-        });
-
+	// console.log("Search Value: "+searchValue);
+	// Iterate over each div and check if its textContent matches searchValue
+	a.forEach(a => {
+		// console.log(a.textContent.trim());
+		 a.classList.remove("selected");
+	  if (a.textContent.trim() === searchValue) {
+		// console.log("Match Found!");
+		// Update the class of the matching div
+		a.className += newClass; // Replace the class
+	  }
+	});
+  }
