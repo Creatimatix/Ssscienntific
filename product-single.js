@@ -29,6 +29,5 @@ setTimeout(() => {
 				document.getElementById("product-title").innerHTML += obj.product.name;
 				document.getElementById("product-description").innerHTML += obj.product.description;
 
-
-
+				document.getElementById("download-button").innerHTML = "<a class='btn btn-gradient small-btn' target='_blank' href='"+obj.product.default_document.document_url+"'>Download Catalog</a>";
 		}
