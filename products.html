@@ -56,22 +56,9 @@
 		<script src="js/vendor/jquery-1.12.4.min.js"></script>
 	<![endif]-->
 	<style>
-		.show{
-			display: block;
-		}
-		.item {
-            padding: 10px;
-            cursor: pointer;
-        }
-		.highlighted {
-            background-color: yellow;
-            font-weight: bold;
-        }
-
-		.selected{
-			background-image: linear-gradient(to top, #dd4454 0%, #dd9044 100%);
-    		color: #fff;
-		}
+		
+		
+		
 	</style>
 </head>
 
@@ -392,6 +379,37 @@
 				<section class="ls s-pt-xl-40 s-pb-xl-70 s-pt-lg-30 s-pb-lg-60 s-py-md-20 s-py-15 c-gutter-30">
 				<div class="container">
 					<div class="row">
+
+						<aside class="col-lg-5 col-xl-3 order-lg-1">
+
+							<div class="widget widget_product_search">
+
+								<h3 class="widget-title">Search</h3>
+
+								<form role="search" class="woocommerce-product-search" action="/">
+
+									<label class="screen-reader-text" for="woocommerce-product-search-field-widget">
+										Search for:
+									</label>
+
+									<input type="search" onkeyup="searchProduct()" id="woocommerce-product-search-field-widget" class="search-field" placeholder="Search" name="search">
+									<!-- <button onclick="loadProducts()" >Search</button> -->
+									<!-- <input type="submit" value="Search" onClick="searchProduct()"> -->
+								</form>
+							</div>
+
+							<div class="widget woocommerce widget_product_categories">
+								<h3 class="widget-title">Categories</h3>
+                				<a class="btn btn-gradient small-btn" href="javascript:void(0)" onClick="loadProducts()">Reset</a>
+								<ul class=""  id="myUL">
+										<!-- Code will be printed by Script -->
+								</ul>
+							</div>
+
+						</aside>
+
+
+
 						<main class="col-lg-7 col-xl-9 order-lg-2">
 							<nav class="woocommerce-pagination">
 								<ul class="page-numbers" id="Pagination1">
@@ -435,34 +453,6 @@
 							</nav>
 
 						</main>
-
-						<aside class="col-lg-5 col-xl-3 order-lg-1">
-
-							<div class="widget widget_product_search">
-
-								<h3 class="widget-title">Search</h3>
-
-								<form role="search" class="woocommerce-product-search" action="/">
-
-									<label class="screen-reader-text" for="woocommerce-product-search-field-widget">
-										Search for:
-									</label>
-
-									<input type="search" onkeyup="searchProduct()" id="woocommerce-product-search-field-widget" class="search-field" placeholder="Search" name="search">
-									<!-- <button onclick="loadProducts()" >Search</button> -->
-									<!-- <input type="submit" value="Search" onClick="searchProduct()"> -->
-								</form>
-							</div>
-
-							<div class="widget woocommerce widget_product_categories">
-								<h3 class="widget-title">Categories</h3>
-                				<a class="btn btn-gradient small-btn" href="javascript:void(0)" onClick="loadProducts()">Reset</a>
-								<ul class=""  id="myUL">
-										<!-- Code will be printed by Script -->
-								</ul>
-							</div>
-
-						</aside>
 
 
 					</div>

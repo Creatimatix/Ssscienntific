@@ -150,7 +150,7 @@ for(i=0;i<obj.length;i++){
 
   // if category does not have child category
   else{
-	product_list+= "<li><a href='javascript:void(0)' class='item' onClick=\"filterCategory('"+obj[i].category_name +"')\">"+ obj[i].category_name + "</a></li>"
+	product_list+= "<li><a href='javascript:void(0)' class='item' onClick=\"filterCategory('"+obj[i].category_name +"')\">"+ obj[i].category_name + "("+obj[i].products.length+")</a></li>"
   }
   
 
