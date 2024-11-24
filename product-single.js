@@ -13,7 +13,7 @@ setTimeout(() => {
 	const obj = JSON.parse(product);
 			
 			// console.log("logs for Product"+obj.product.documents.document_url);
-			console.log("logs for Product: "+obj.product.default_image.image_url);
+			// console.log("logs for Product: "+obj.product.default_image?.image_url);
 			document.getElementById("product-image").innerHTML ="";
 			document.getElementById("product-title").innerHTML ="";
 			document.getElementById("product-description").innerHTML ="";
@@ -23,11 +23,11 @@ setTimeout(() => {
 
 				document.getElementById("product-image")
 				.innerHTML += "<a href='' class='photoswipe-link' data-width='1170' data-height='780'>"
-				+"<img class='product_img' src='"+obj.product.default_image.image_url+"' width='200' height='200' alt=''></a>";
+				+"<img class='product_img' src='"+obj.product.default_image?.image_url+"' width='200' height='200' alt=''></a>";
 
 
 				document.getElementById("product-title").innerHTML += obj.product.name;
-				document.getElementById("product-description").innerHTML += obj.product.description;
+				document.getElementById("product-description").innerHTML += obj.product?.description;
 
-				document.getElementById("download-button").innerHTML = "<a class='btn btn-gradient small-btn' target='_blank' href='"+obj.product.default_document.document_url+"'>Download Catalog</a>";
+				document.getElementById("download-button").innerHTML = "<a class='btn btn-gradient small-btn' target='_blank' href='"+obj.product.default_document?.document_url+"'>Download Catalog</a>";
 		}
