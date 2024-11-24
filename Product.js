@@ -44,8 +44,8 @@ function loadProducts(){
 						{
 							for(product=0;product<obj[i].child_level_categories[j].products.length;product++){
 								// console.log("Image URL : "+obj[i].child_level_categories[j].products[product].id);
-								var image_url = obj[i].child_level_categories[j].image?.image_url !=null ? obj[i].child_level_categories[j].image?.image_url : "images/Dummy_Product_Image.jpg";
-								var document_url = obj[i].child_level_categories[j].documents?.document_url !=null ? obj[i].child_level_categories[j].documents?.document_url : "i";
+								var image_url = obj[i].child_level_categories[j].products[product].image?.image_url !=null ? obj[i].child_level_categories[j].products[product].image?.image_url : "images/Dummy_Product_Image.jpg";
+								var document_url = obj[i].child_level_categories[j].products[product].documents?.document_url !=null ? obj[i].child_level_categories[j].products[product].documents?.document_url : "";
 								AddProductstoArray(obj[i].child_level_categories[j].products[product].id,obj[i].child_level_categories[j].products[product].name,obj[i].child_level_categories[j].category_name,image_url,document_url);
 								// printProduct(obj[i].child_level_categories[j].products[product].name,obj[i].child_level_categories[j].category_name,image_url,obj[i].child_level_categories[j].document_url);
 							}
@@ -123,8 +123,8 @@ for(i=0;i<obj.length;i++){
 
   // if category have child category
   if(obj[i].child_level_categories.length>0){
-	product_list += "<li><span class='caret'>" + obj[i].category_name + " ("+obj[i].child_level_categories.length+")</span>"
-	  + "<ul class='nested'>"
+	product_list += "<li><span class='caret '>" + obj[i].category_name + " ("+obj[i].child_level_categories.length+")</span>"
+	  + "<ul class='nested active'>"
 		
 		// for each child category
 		for(j=0; j<obj[i].child_level_categories.length; j++){
@@ -139,7 +139,7 @@ for(i=0;i<obj.length;i++){
 			product_list+= "</ul></li>"    
 		  }
 		  else{
-			product_list+= "<li><a href='javascript:void(0)' onClick=\"filterCategory('"+obj[i].child_level_categories[j].category_name +"')\">"+ obj[i].child_level_categories[j].category_name + "</a></li>"
+			product_list+= "<li><a href='javascript:void(0)' onClick=\"filterCategory('"+obj[i].child_level_categories[j].category_name +"')\">"+ obj[i].child_level_categories[j].category_name + " ("+obj[i].child_level_categories[j].products.length+")</a></li>"
 		  }
 
 		}
