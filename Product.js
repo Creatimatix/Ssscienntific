@@ -9,13 +9,14 @@ var CurrentList=[];
 // Initial Call
 
  // Show the loader
- document.getElementById('loader').style.display = 'block';
+document.getElementById('canvas').style.visibility = 'hidden';
+document.getElementById('loader').style.display = 'block';
 setTimeout(() => {
 loadProducts(1);
 loadlist();
 // Hide the loader once the data is fetched
 document.getElementById('loader').style.display = 'none';
-document.getElementById('canvas').style.display = 'block';
+document.getElementById('canvas').style.visibility = 'visible';
 loadCaret();
 }, 2000);
 
