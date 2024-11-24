@@ -5,6 +5,21 @@ var ProductsList=[];
 var CurrentList=[];
 
 
+
+// Initial Call
+
+ // Show the loader
+ document.getElementById('loader').style.display = 'block';
+setTimeout(() => {
+loadProducts(1);
+loadlist();
+// Hide the loader once the data is fetched
+document.getElementById('loader').style.display = 'none';
+document.getElementById('canvas').style.display = 'block';
+}, 2000);
+
+
+
 // Rendering Products intially
 function loadProducts(){
 	
@@ -123,13 +138,13 @@ for(i=0;i<obj.length;i++){
 
   // if category have child category
   if(obj[i].child_level_categories.length>0){
-	product_list += "<li><span class='caret '>" + obj[i].category_name + " ("+obj[i].child_level_categories.length+")</span>"
+	product_list += "<li><span class='caret '>" + obj[i].category_name + "</span>"
 	  + "<ul class='nested active'>"
 		
 		// for each child category
 		for(j=0; j<obj[i].child_level_categories.length; j++){
 		  if(obj[i].child_level_categories[j].child_level_categories.length>0){
-			product_list+= "<li><span class='caret'>" + obj[i].child_level_categories[j].category_name + " ("+obj[i].child_level_categories[j].child_level_categories.length+")</span>"
+			product_list+= "<li><span class='caret'>" + obj[i].child_level_categories[j].category_name + "</span>"
 			+ "<ul class='nested active'>"
 
 			// loop over each sub category
@@ -150,7 +165,7 @@ for(i=0;i<obj.length;i++){
 
   // if category does not have child category
   else{
-	product_list+= "<li><a href='javascript:void(0)' class='item' onClick=\"filterCategory('"+obj[i].category_name +"')\">"+ obj[i].category_name + "("+obj[i].products.length+")</a></li>"
+	product_list+= "<li><a href='javascript:void(0)' class='item' onClick=\"filterCategory('"+obj[i].category_name +"')\">"+ obj[i].category_name + " ("+obj[i].products.length+")</a></li>"
   }
   
 
@@ -250,13 +265,6 @@ for (let i = 0; i < togglerPageNumbers.length; i++) {
 }
 
 
-
-
-// Initial Call
-setTimeout(() => {
-loadProducts(1);
-loadlist();
-}, 2000);
 
 
 

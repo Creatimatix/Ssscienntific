@@ -57,7 +57,27 @@
 	<![endif]-->
 	<style>
 		
-		
+		/* Loader styles (simple spinner) */
+.loader {
+	border: 8px solid #f3f3f3;  /* Light background */
+  border-top: 8px solid #db9e34; /* Blue spinner */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+
+  /* Absolute positioning to center the loader */
+  position: absolute;
+  top: 50%;        /* Position loader vertically at 50% */
+  left: 50%;       /* Position loader horizontally at 50% */
+  transform: translate(-50%, -50%); /* Move the loader back by 50% of its width and height */
+}
+
+/* Animation for spinning */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 		
 	</style>
 </head>
@@ -66,90 +86,14 @@
 	<!--[if lt IE 9]>
 		<div class="bg-danger text-center">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" class="color-main">upgrade your browser</a> to improve your experience.</div>
 	<![endif]-->
-
+<!-- 
 	<div class="preloader">
 		<div class="preloader_image"></div>
-	</div>
-
-	<!-- search modal -->
-	<div class="modal" tabindex="-1" role="dialog" aria-labelledby="search_modal" id="search_modal">
-		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-			<span aria-hidden="true">&times;</span>
-		</button>
-		<div class="widget widget_search">
-			<form method="get" class="searchform search-form" action="/">
-				<div class="form-group">
-					<input type="text" value="" name="search" class="form-control" placeholder="Search keyword" id="modal-search-input">
-				</div>
-				<button type="submit" class="btn">Search</button>
-			</form>
-		</div>
-	</div>
-	<div id="team-form" class="ds modal">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6 offset-md-3">
-					<div class="form-wrapper ls rounded">
-						<form class="contact-form" method="post" action="/">
-							<div class="row c-mb-20">
-								<div class="col-12 form-title text-center form-builder-item">
-									<div class="header title">
-										<h4><span class="thin">Contact</span> me</h4>
-									</div>
-								</div>
-							</div>
-							<div class="row c-mb-20">
-								<div class="col-sm-12">
-									<div class="form-group has-placeholder">
-										<label for="name333">Full Name <span class="required">*</span></label>
-										<input type="text" aria-required="true" size="30" value="" name="name" id="name333" class="form-control" placeholder="Your name">
-									</div>
-								</div>
-								<div class="col-sm-12">
-									<div class="form-group has-placeholder">
-										<label for="phone35533">Email address<span class="required">*</span></label>
-										<input type="tel" aria-required="true" size="30" name="phone" id="phone35533" class="form-control" placeholder="Phone Number">
-									</div>
-								</div>
-							</div>
-							<div class="row c-mb-20">
-								<div class="col-sm-12">
-									<div class="form-group has-placeholder">
-										<label for="message333">Message</label>
-										<textarea aria-required="true" rows="3" cols="45" name="message" id="message333" class="form-control" placeholder="Message"></textarea>
-									</div>
-								</div>
-							</div>
-							<div class="row c-mb-20">
-								<div class="col-sm-12 mb-0 mt-10 text-center">
-									<div class="form-group">
-										<input class="btn btn-gradient" type="submit" value="Contact me">
-									</div>
-								</div>
-							</div>
-						</form>
-					</div>
-
-				</div>
-			</div>
-
-
-		</div>
-
-
-	</div>
-
-
-	<!-- Unyson messages modal -->
-	<div class="modal fade" tabindex="-1" role="dialog" id="messages_modal">
-		<div class="fw-messages-wrap ls p-normal">
-			
-
-		</div>
-	</div><!-- eof .modal -->
+	</div> -->
+	<div id="loader" class="loader"></div>
 
 	<!-- wrappers for visual page editor and boxed version of template -->
-	<div id="canvas">
+	<div id="canvas" style="display:none;">
 		<div id="box_wrapper">
 
 			<!-- template sections -->
