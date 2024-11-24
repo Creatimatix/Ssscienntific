@@ -69,29 +69,6 @@
 	max-height: 300px;
 }
 
-/* Loader styles (simple spinner) */
-.loader {
-	border: 8px solid #f3f3f3;  /* Light background */
-  border-top: 8px solid #3498db; /* Blue spinner */
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  animation: spin 1s linear infinite;
-
-  /* Absolute positioning to center the loader */
-  position: absolute;
-  top: 50%;        /* Position loader vertically at 50% */
-  left: 50%;       /* Position loader horizontally at 50% */
-  transform: translate(-50%, -50%); /* Move the loader back by 50% of its width and height */
-}
-}
-
-/* Animation for spinning */
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
 </style>
 
 </head>
@@ -104,10 +81,6 @@
 	<div class="preloader">
 		<div class="preloader_image"></div>
 	</div>
-
-  <!-- Loader element -->
-  <div id="loader" class="loader"></div>
-
 
 	<!-- search modal -->
 	<div class="modal" tabindex="-1" role="dialog" aria-labelledby="search_modal" id="search_modal">
@@ -178,9 +151,21 @@
 	</div>
 
 
-	
+	<!-- Unyson messages modal -->
+	<div class="modal fade" tabindex="-1" role="dialog" id="messages_modal">
+		<div class="fw-messages-wrap ls p-normal">
+			<!-- Uncomment this UL with LI to show messages in modal popup to your user: -->
+			<!--
+		<ul class="list-unstyled">
+			<li>Message To User</li>
+		</ul>
+		-->
+
+		</div>
+	</div><!-- eof .modal -->
+
 	<!-- wrappers for visual page editor and boxed version of template -->
-	<div id="canvas" style="display:none;">
+	<div id="canvas">
 		<div id="box_wrapper">
 
 			<!-- template sections -->
@@ -405,55 +390,53 @@
 				</div>
 			</section>
 
-			<section class="ls fw-team-template-default single s-pt-xl-160 s-pt-lg-130 s-pt-md-90 s-pt-60 s-pb-xl-160 s-pb-lg-130 s-pb-md-90 s-pb-60">
-				<div class="container" style="padding-top:100px">
+			<section class="ls s-pt-xl-160 s-pt-lg-130 s-pt-md-90 s-pt-60 s-pb-xl-280 s-pb-lg-250 s-pb-md-90 s-pb-60">
+				<div class="container">
 					<div class="row">
-						<div class="col-12">
-							<div class="row">
-								<div class="col-12">
-									<div class="side-item">
-										<div class="item-media rounded" id="product-image" >
-											<!-- <img src="images/team/team-single.jpg" alt="team"> -->
-										</div>
+						<div class="col-lg-10 offset-lg-1">
+
+							<div class="vertical-item content-padding overflow-hidden bordered rounded text-center">
+								<div class="item-media">
+									<div class="owl-carousel" id="product-image" data-margin="0" data-responsive-lg="1" data-responsive-md="1" data-responsive-sm="1" data-responsive-xs="1" data-dots="true">
+										<!-- <a href="images/gallery/full/04.jpg" class="photoswipe-link" data-width="1170" data-height="780">
+											<img src="images/gallery/full/01.jpg" alt="">
+										</a> -->
+										<!-- <a href="images/gallery/full/05.jpg" class="photoswipe-link" data-width="1170" data-height="780" data-iframe="https://www.youtube.com/embed/mcixldqDIEQ">
+											<img src="images/gallery/full/02.jpg" alt="">
+										</a>
+										<a href="images/gallery/full/06.jpg" class="photoswipe-link" data-width="1170" data-height="780" data-iframe="//player.vimeo.com/video/1084537">
+											<img src="images/gallery/full/03.jpg" alt="">
+										</a> -->
+									</div>
+								</div>
+								<div class="item-content">
+									<h4 id="product-title">
 										
-										<!-- <div class="item-media" id="download-button">
-											<div class="divider-30 hidden-below-md"></div>
-
-										</div> -->
-										<div class="item-content" style="padding-top: 0px;">
-											<h2 id="product-title">
-												
-											</h2>
-											
-											<p class="small-text color-main">
-												
-											</p>
-											<div class="divider-30 hidden-below-md"></div>
-											<div class="divider-30 hidden-above-md"></div>
-											<p id="product-description">
-												
-											</p>
-											
-											<div class="divider-30 hidden-below-md"></div>
-											<div class="divider-30 hidden-above-md"></div>
-											<span class="social-icons">
-												<a href="#" class="fab fa-facebook-f" title="facebook"></a>
-												<a href="#" class="fab fa-telegram-plane" title="telegram"></a>
-												<a href="#" class="fab fa-instagram" title="instagram"></a>
-												<a href="#" class="fab fa-linkedin-in" title="linkedin"></a>
-											</span>
-											<div class="divider-30 hidden-below-md"></div>
-											<div class="divider-30 hidden-above-md"></div>
+									</h4>
+									<div id="download-button">
 										
+									</div>
+									<div class="divider-30"></div>
+									<p id="product-description">
+										
+									</p>
+
+									
 
 
-										</div>
+									<div class="social-icons">
+										<a href="#" class="fab fa-facebook " title="facebook"></a>
+										<a href="#" class="fab fa-twitter " title="twitter"></a>
+										<a href="#" class="fab fa-instagram " title="instagram"></a>
 									</div>
 								</div>
 							</div>
 
 						</div>
+
+
 					</div>
+
 				</div>
 			</section>
 
