@@ -16,6 +16,7 @@ loadlist();
 // Hide the loader once the data is fetched
 document.getElementById('loader').style.display = 'none';
 document.getElementById('canvas').style.display = 'block';
+loadCaret();
 }, 2000);
 
 
@@ -106,7 +107,7 @@ function AddProductstoArray(Product_ID, Product_Name, Product_LineName, Product_
 				// 	inactive_status="";
 				// }
 			
-				// console.log("status:"+inactive_status);
+				// console.log("current list:"+CurrentList[i].ID);
 				var product_page = "./product-single.html?product_id="+CurrentList[i].ID;
 
 				document.getElementById("products1").innerHTML += "<li class='product "+CurrentList[i].LineName+" "+CurrentList[i].Name+" item-gallery vertical-item' name='"+CurrentList[i].Name+"'>"
@@ -138,7 +139,7 @@ for(i=0;i<obj.length;i++){
 
   // if category have child category
   if(obj[i].child_level_categories.length>0){
-	product_list += "<li><span class='caret '>" + obj[i].category_name + "</span>"
+	product_list += "<li><span class='caret'>" + obj[i].category_name + "</span>"
 	  + "<ul class='nested active'>"
 		
 		// for each child category
@@ -266,22 +267,26 @@ for (let i = 0; i < togglerPageNumbers.length; i++) {
 
 
 
+function loadCaret(){
 
-
-// ---------- Carrot Functionality -------------------
+	// ---------- Carrot Functionality -------------------
 
 var toggler = document.getElementsByClassName("caret");
 
 
 for (let i = 0; i < toggler.length; i++) {
 toggler[i].addEventListener("click", function() {
-// console.log("clicked!");
+console.log("clicked!");
 this.parentElement.querySelector(".nested").classList.toggle("active");
 this.classList.toggle("caret-down");
 });
 }
 
 // ---------- End of Carrot Functionality ------------
+
+
+}
+
 
 function updatePageNumberHighlightByValue(searchValue, newClass) {
 	// Get all div elements with class 'content'
