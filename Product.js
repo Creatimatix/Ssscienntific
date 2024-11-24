@@ -130,7 +130,7 @@ for(i=0;i<obj.length;i++){
 		for(j=0; j<obj[i].child_level_categories.length; j++){
 		  if(obj[i].child_level_categories[j].child_level_categories.length>0){
 			product_list+= "<li><span class='caret'>" + obj[i].child_level_categories[j].category_name + " ("+obj[i].child_level_categories[j].child_level_categories.length+")</span>"
-			+ "<ul class='nested'>"
+			+ "<ul class='nested active'>"
 
 			// loop over each sub category
 			for(k=0;k<obj[i].child_level_categories[j].child_level_categories.length;k++){
